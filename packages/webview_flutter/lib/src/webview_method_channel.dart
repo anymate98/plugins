@@ -85,6 +85,24 @@ class MethodChannelWebViewPlatform implements WebViewPlatformController {
   }
 
   @override
+  Future<void> loadDataWithBaseURL(
+    String? baseUrl,
+    String data,
+    String? mimeType,
+    String? encoding,
+    String? failUrl,
+  ) async {
+    assert(data != null);
+    return _channel.invokeMethod<void>('loadDataWithBaseURL', <String, dynamic>{
+      'baseUrl': baseUrl,
+      'data': data,
+      'mimeType': mimeType,
+      'encoding': encoding,
+      'failUrl': failUrl,
+    });
+  }
+
+  @override
   Future<String?> currentUrl() => _channel.invokeMethod<String>('currentUrl');
 
   @override
@@ -132,6 +150,11 @@ class MethodChannelWebViewPlatform implements WebViewPlatformController {
   Future<void> removeJavascriptChannels(Set<String> javascriptChannelNames) {
     return _channel.invokeMethod<void>(
         'removeJavascriptChannels', javascriptChannelNames.toList());
+  }
+
+  @override
+  Future<void> setAcceptThirdPartyCookies(bool accept) {
+    return _channel.invokeMethod<void>('setAcceptThirdPartyCookies', accept);
   }
 
   @override

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package io.flutter.plugins.webviewflutter;
+package kr.iamport.iamport_webview_flutter;
 
 import android.os.Handler;
 import android.os.IBinder;

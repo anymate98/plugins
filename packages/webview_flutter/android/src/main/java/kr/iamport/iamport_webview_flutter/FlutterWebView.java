@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package io.flutter.plugins.webviewflutter;
+package kr.iamport.iamport_webview_flutter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.CookieManager;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
@@ -193,6 +194,9 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
       case "loadUrl":
         loadUrl(methodCall, result);
         break;
+      case "loadDataWithBaseURL":
+        loadDataWithBaseURL(methodCall, result);
+        break;
       case "updateSettings":
         updateSettings(methodCall, result);
         break;
@@ -226,6 +230,9 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
       case "clearCache":
         clearCache(result);
         break;
+      case "setAcceptThirdPartyCookies":
+        setAcceptThirdPartyCookies(methodCall, result);
+        break;
       case "getTitle":
         getTitle(result);
         break;
@@ -255,6 +262,21 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
       headers = Collections.emptyMap();
     }
     webView.loadUrl(url, headers);
+    result.success(null);
+  }
+
+  @SuppressWarnings("unchecked")
+  private void loadDataWithBaseURL(MethodCall methodCall, Result result) {
+    Map<String, Object> request = (Map<String, Object>) methodCall.arguments;
+    String baseUrl = (String) request.get("url");
+    String data = (String) request.get("data");
+    if(data == null) {
+        data = "";
+    }
+    String mimeType = (String) request.get("mimeType");
+    String encoding = (String) request.get("encoding");
+    String failUrl = (String) request.get("failUrl");
+    webView.loadDataWithBaseURL(baseUrl, data, mimeType, encoding, failUrl);
     result.success(null);
   }
 
@@ -434,6 +456,14 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
 
   private void updateUserAgent(String userAgent) {
     webView.getSettings().setUserAgentString(userAgent);
+  }
+
+  private void setAcceptThirdPartyCookies(MethodCall methodCall, Result result) {
+    Map<String, Object> request = (Map<String, Object>) methodCall.arguments;
+    boolean accept = (boolean) request.get("accept");
+    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+      CookieManager.getInstance().setAcceptThirdPartyCookies(this.webView, accept);
+    result.success(0);
   }
 
   @Override

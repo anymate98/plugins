@@ -649,6 +649,27 @@ class WebViewController {
     return _webViewPlatformController.loadUrl(url, headers);
   }
 
+  /// Loads the given data into this WebView, using baseUrl as the base URL for the content.
+  ///
+  /// The base URL is used both to resolve relative URLs and when applying
+  /// JavaScript's same origin policy.
+  ///
+  /// The historyUrl is used for the history entry.
+  ///
+  /// `data` must not be null.
+  Future<void> loadDataWithBaseURL(
+    String? baseUrl,
+    String data,
+    String? mimeType,
+    String? encoding,
+    String? failUrl,
+  ) async {
+    assert(data != null);
+    _validateUrlString(baseUrl!);
+    return _webViewPlatformController.loadDataWithBaseURL(
+        baseUrl, data, mimeType, encoding, failUrl);
+  }
+
   /// Accessor to the current URL that the WebView is displaying.
   ///
   /// If [WebView.initialUrl] was never specified, returns `null`.
@@ -767,6 +788,10 @@ class WebViewController {
     // https://github.com/flutter/flutter/issues/26431
     // ignore: strong_mode_implicit_dynamic_method
     return _webViewPlatformController.evaluateJavascript(javascriptString);
+  }
+
+  Future<void> setAcceptThirdPartyCookies(bool accept) {
+    return _webViewPlatformController.setAcceptThirdPartyCookies(accept);
   }
 
   /// Returns the title of the currently loaded page.

@@ -1,3 +1,9 @@
+## 3.0.0
+
+* Changed package name to iamport_webview_flutter
+* Added support to allow third party cookies on Android
+* Added support to load data with base URL on Android
+
 ## 2.0.4
 
 * Fix a bug where `allowsInlineMediaPlayback` is not respected on iOS.

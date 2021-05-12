@@ -6,7 +6,7 @@ package io.flutter.plugins.webviewflutterexample;
 
 import android.os.Bundle;
 import dev.flutter.plugins.integration_test.IntegrationTestPlugin;
-import io.flutter.plugins.webviewflutter.WebViewFlutterPlugin;
+import io.flutter.plugins.iamport_webview_flutter.WebViewFlutterPlugin;
 
 @SuppressWarnings("deprecation")
 public class EmbeddingV1Activity extends io.flutter.app.FlutterActivity {

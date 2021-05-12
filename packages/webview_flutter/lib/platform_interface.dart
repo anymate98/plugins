@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 
-import 'webview_flutter.dart';
+import 'iamport_webview_flutter.dart';
 
 /// Interface for callbacks made by [WebViewPlatformController].
 ///
@@ -173,7 +173,7 @@ abstract class WebViewPlatformController {
 
   /// Loads the specified URL.
   ///
-  /// If `headers` is not null and the URL is an HTTP URL, the key value paris in `headers` will
+  /// If `headers` is not null and the URL is an HTTP URL, the key value pairs in `headers` will
   /// be added as key value pairs of HTTP headers for the request.
   ///
   /// `url` must not be null.
@@ -185,6 +185,25 @@ abstract class WebViewPlatformController {
   ) {
     throw UnimplementedError(
         "WebView loadUrl is not implemented on the current platform");
+  }
+
+  /// Loads the given data into this WebView, using baseUrl as the base URL for the content.
+  ///
+  /// The base URL is used both to resolve relative URLs and when applying
+  /// JavaScript's same origin policy.
+  ///
+  /// The historyUrl is used for the history entry.
+  ///
+  /// `data` must not be null.
+  Future<void> loadDataWithBaseURL(
+    String? baseUrl,
+    String data,
+    String? mimeType,
+    String? encoding,
+    String? failUrl,
+  ) {
+    throw UnimplementedError(
+        "WebView loadDataWithBaseURL is not implemented on the current platform");
   }
 
   /// Updates the webview settings.
@@ -283,6 +302,14 @@ abstract class WebViewPlatformController {
   Future<void> removeJavascriptChannels(Set<String> javascriptChannelNames) {
     throw UnimplementedError(
         "WebView removeJavascriptChannels is not implemented on the current platform");
+  }
+
+  /// Sets whether the WebView should allow third party cookies to be set.
+  /// Allowing third party cookies is a per WebView policy and can be set differently
+  /// on different WebView instances.
+  Future<void> setAcceptThirdPartyCookies(bool accept) {
+    throw UnimplementedError(
+        "WebView acceptThirdPartyCookies is not implemented on the current platform");
   }
 
   /// Returns the title of the currently loaded page.
