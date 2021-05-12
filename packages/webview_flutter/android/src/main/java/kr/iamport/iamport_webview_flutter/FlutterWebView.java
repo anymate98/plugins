@@ -459,8 +459,9 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
   }
 
   private void setAcceptThirdPartyCookies(MethodCall methodCall, Result result) {
-    Map<String, Object> request = (Map<String, Object>) methodCall.arguments;
-    boolean accept = (boolean) request.get("accept");
+//    Map<String, Object> request = (Map<String, Object>) methodCall.arguments;
+    boolean accept = (boolean) methodCall.arguments;
+//    boolean accept = (boolean) request.get("accept");
     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
       CookieManager.getInstance().setAcceptThirdPartyCookies(this.webView, accept);
     result.success(0);

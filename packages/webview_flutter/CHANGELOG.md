@@ -1,3 +1,7 @@
+## 3.0.0+1
+
+* fixed methodCall argument error in setAcceptThirdPartyCookies
+
 ## 3.0.0
 
 * Changed package name to iamport_webview_flutter
