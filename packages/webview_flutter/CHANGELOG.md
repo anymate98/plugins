@@ -1,3 +1,19 @@
+## 3.0.0+5
+
+* fix error in setAcceptThirdPartyCookies in ios
+
+## 3.0.0+4
+
+* Add setAcceptThirdPartyCookies functionality in ios
+
+## 3.0.0+3
+
+* fixed podspec name for ios
+
+## 3.0.0+2
+
+* fixed support for ios
+
 ## 3.0.0+1
 
 * fixed methodCall argument error in setAcceptThirdPartyCookies
@@ -20,7 +36,7 @@ the wrong side of the screen.
 ## 2.0.2
 
 * Fixes bug where text fields are hidden behind the keyboard
-when hybrid composition is used [flutter/issues/75667](https://github.com/flutter/flutter/issues/75667).
+when hybrid composition is used [flutter/issues/75667](https://github.com/flutter/flutter/issues/7566   7).
 
 ## 2.0.1
 
