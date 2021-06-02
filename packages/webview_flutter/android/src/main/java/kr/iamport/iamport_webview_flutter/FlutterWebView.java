@@ -5,7 +5,9 @@
 package kr.iamport.iamport_webview_flutter;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.os.Handler;
@@ -17,6 +19,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.JsResult;
 import androidx.annotation.NonNull;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
@@ -77,6 +80,49 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     @Override
     public void onProgressChanged(WebView view, int progress) {
       flutterWebViewClient.onLoadingProgress(progress);
+    }
+
+    @Override
+    public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+      new AlertDialog.Builder(view.getContext())
+              .setTitle(url + "에 삽입된 내용")
+              .setMessage(message)
+              .setPositiveButton(android.R.string.ok,
+                      new AlertDialog.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                          result.confirm();
+                        }
+                      })
+              .setCancelable(false)
+              .create()
+              .show();
+
+      return true;
+    }
+
+    @Override
+    public boolean onJsConfirm(WebView view, String url, String message, final JsResult result) {
+      new AlertDialog.Builder(view.getContext())
+              .setTitle(url + "에 삽입된 내용")
+              .setMessage(message)
+              .setPositiveButton(android.R.string.ok,
+                      new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                          result.confirm();
+                        }
+                      })
+              .setNegativeButton(android.R.string.cancel,
+                      new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                          result.cancel();
+                        }
+                      })
+              .setCancelable(false)
+              .create()
+              .show();
+
+      return true;
     }
   }
 

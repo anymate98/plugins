@@ -478,4 +478,28 @@
   return nil;
 }
 
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"닫기" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        completionHandler();
+    }]];
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"취소", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        completionHandler(false);
+    }]];
+
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"확인", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        completionHandler(true);
+    }]];
+
+    [self presentViewController:alert animated:true completion:nil];
+}
+
 @end
