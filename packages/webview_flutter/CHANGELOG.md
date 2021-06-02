@@ -1,3 +1,6 @@
+## 3.0.1
+* Add Javascript alert and confirm handlers on Android and iOS
+
 ## 3.0.0+5
 
 * fix error in setAcceptThirdPartyCookies in ios
