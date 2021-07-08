@@ -27,7 +27,7 @@ class CupertinoWebView implements WebViewPlatform {
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
   }) {
     return UiKitView(
-      viewType: 'plugins.flutter.io/webview',
+      viewType: 'plugins.flutter.io/imp_webview',
       onPlatformViewCreated: (int id) {
         if (onWebViewPlatformCreated == null) {
           return;

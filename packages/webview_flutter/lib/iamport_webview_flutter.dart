@@ -89,7 +89,7 @@ class SurfaceAndroidWebView extends AndroidWebView {
     assert(Platform.isAndroid);
     assert(webViewPlatformCallbacksHandler != null);
     return PlatformViewLink(
-      viewType: 'plugins.flutter.io/webview',
+      viewType: 'plugins.flutter.io/imp_webview',
       surfaceFactory: (
         BuildContext context,
         PlatformViewController controller,
@@ -104,7 +104,7 @@ class SurfaceAndroidWebView extends AndroidWebView {
       onCreatePlatformView: (PlatformViewCreationParams params) {
         return PlatformViewsService.initSurfaceAndroidView(
           id: params.id,
-          viewType: 'plugins.flutter.io/webview',
+          viewType: 'plugins.flutter.io/imp_webview',
           // WebView content is not affected by the Android view's layout direction,
           // we explicitly set it here so that the widget doesn't require an ambient
           // directionality.

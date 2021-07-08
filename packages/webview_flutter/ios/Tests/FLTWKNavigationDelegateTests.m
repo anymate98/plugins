@@ -9,19 +9,19 @@
 // OCMock library doesn't generate a valid modulemap.
 #import <OCMock/OCMock.h>
 
-@interface FLTWKNavigationDelegateTests : XCTestCase
+@interface FLTIamportWKNavigationDelegateTests : XCTestCase
 
 @property(strong, nonatomic) FlutterMethodChannel *mockMethodChannel;
-@property(strong, nonatomic) FLTWKNavigationDelegate *navigationDelegate;
+@property(strong, nonatomic) FLTIamportWKNavigationDelegate *navigationDelegate;
 
 @end
 
-@implementation FLTWKNavigationDelegateTests
+@implementation FLTIamportWKNavigationDelegateTests
 
 - (void)setUp {
   self.mockMethodChannel = OCMClassMock(FlutterMethodChannel.class);
   self.navigationDelegate =
-      [[FLTWKNavigationDelegate alloc] initWithChannel:self.mockMethodChannel];
+      [[FLTIamportWKNavigationDelegate alloc] initWithChannel:self.mockMethodChannel];
 }
 
 - (void)testWebViewWebContentProcessDidTerminateCallsRecourseErrorChannel {

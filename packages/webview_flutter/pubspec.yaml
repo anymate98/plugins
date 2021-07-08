@@ -25,4 +25,4 @@ flutter:
         package: kr.iamport.iamport_webview_flutter
         pluginClass: WebViewFlutterPlugin
       ios:
-        pluginClass: FLTWebViewFlutterPlugin
+        pluginClass: FLTIamportWebViewFlutterPlugin

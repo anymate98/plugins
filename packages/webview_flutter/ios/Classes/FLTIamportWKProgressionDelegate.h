@@ -8,7 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FLTWKProgressionDelegate : NSObject
+@interface FLTIamportWKProgressionDelegate : NSObject
 
 - (instancetype)initWithWebView:(WKWebView *)webView channel:(FlutterMethodChannel *)channel;
 
