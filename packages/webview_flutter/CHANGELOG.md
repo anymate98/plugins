@@ -1,3 +1,6 @@
+## 3.0.2
+* fix conflict with original webview_flutter
+
 ## 3.0.1
 * Add Javascript alert and confirm handlers on Android and iOS
 
