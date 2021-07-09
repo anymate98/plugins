@@ -1,3 +1,6 @@
+## 3.0.3
+* Fix android issues with creating platform views
+
 ## 3.0.2
 * fix conflict with original webview_flutter
 
