@@ -18,7 +18,7 @@ class FlutterCookieManager implements MethodCallHandler {
   private final MethodChannel methodChannel;
 
   FlutterCookieManager(BinaryMessenger messenger) {
-    methodChannel = new MethodChannel(messenger, "plugins.flutter.io/cookie_manager");
+    methodChannel = new MethodChannel(messenger, "plugins.flutter.io/imp_cookie_manager");
     methodChannel.setMethodCallHandler(this);
   }
 
