@@ -1,3 +1,6 @@
+## 3.0.4
+* Add navigation prevention logic when url is loading app
+
 ## 3.0.3
 * Fix android issues with creating platform views
 
