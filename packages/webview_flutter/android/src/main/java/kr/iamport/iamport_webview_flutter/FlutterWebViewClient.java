@@ -7,6 +7,7 @@ package kr.iamport.iamport_webview_flutter;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -18,7 +19,10 @@ import androidx.annotation.RequiresApi;
 import androidx.webkit.WebResourceErrorCompat;
 import androidx.webkit.WebViewClientCompat;
 import io.flutter.plugin.common.MethodChannel;
+
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -95,7 +99,21 @@ class FlutterWebViewClient {
     // we just return false to allow the navigation.
     //
     // For more details see: https://github.com/flutter/flutter/issues/25329#issuecomment-464863209
+    if(isAppUrl(request.getUrl().toString())) {
+      return true;
+    }
     return request.isForMainFrame();
+  }
+
+  boolean isAppUrl(String uri) {
+    try {
+      String scheme = Uri.parse(uri).getScheme();
+      List<String> schemeList = Arrays.asList("http", "https", "about", "data", "");
+
+      return !schemeList.contains(scheme);
+    } catch (Exception ignored) {
+        return false;
+    }
   }
 
   boolean shouldOverrideUrlLoading(WebView view, String url) {
