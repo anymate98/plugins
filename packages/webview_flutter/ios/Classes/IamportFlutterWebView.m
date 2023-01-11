@@ -37,6 +37,17 @@
 
 @implementation FLTIamportWKWebView
 
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent*)event {
+  UIView* hitView = [super hitTest:point withEvent:event];
+  NSArray* grecs = self.superview.gestureRecognizers;
+  for (UIGestureRecognizer *rec in grecs) {
+    if ([rec isKindOfClass: NSClassFromString(@"DelayingGestureRecognizer")]) {
+      rec.enabled = NO;
+    }
+  }
+  return hitView;
+}
+
 - (void)setFrame:(CGRect)frame {
   [super setFrame:frame];
   self.scrollView.contentInset = UIEdgeInsetsZero;
