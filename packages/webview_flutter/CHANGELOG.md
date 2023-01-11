@@ -1,3 +1,6 @@
+## 3.0.5
+* fix poor response performance for fast clicks in iOS webview 
+
 ## 3.0.4
 * Add navigation prevention logic when url is loading app
 
