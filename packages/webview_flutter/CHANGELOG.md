@@ -1,3 +1,6 @@
+## 3.0.6
+* enable mixed content in Android webview
+
 ## 3.0.5
 * fix poor response performance for fast clicks in iOS webview 
 
