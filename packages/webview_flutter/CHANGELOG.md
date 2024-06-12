@@ -1,3 +1,6 @@
+## 3.0.7
+* upgraded android gradle library version to 8.4.2
+
 ## 3.0.6
 * enable mixed content in Android webview
 
